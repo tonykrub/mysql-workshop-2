@@ -1,0 +1,9 @@
+Exercise 3
+
+Retrieve data from the previously inserted decodemtl_addressbook.Account row
+
+Retrieve data from the previously inserted decodemtl_addressbook.AddressBook row
+
+Retrieve data from the previously inserted decodemtl_addressbook.Entry rows
+
+// look at Ziad's lecture note on 18 July on how to do the above.
