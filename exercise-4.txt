@@ -1,0 +1,21 @@
+Exercise 4
+
+1) Modify the decodemtl_addressbook.Account row
+
+2) Modify the decodemtl_addressbook.AddressBook row
+
+3) Modify the three decodemtl_addressbook.Entry rows using one query only
+
+// to do this, read http://www.sqlcourse.com/update.html
+Answer 1) 
+UPDATE Account
+    -> SET email = 'tony@gmail.com' WHERE id = 999;
+    
+Answer 2)
+UPDATE AddressBook
+    -> SET name = 'Rose' WHERE id = 9;
+    
+Answer 3)
+UPDATE Entry
+    -> SET birthday = '1 January 1999' WHERE firstName = 'Lisa';
+
