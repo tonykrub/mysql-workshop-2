@@ -1,0 +1,5 @@
+Exercise 6
+
+Delete decodemtl_addressbook.Account and all associated date
+
+Answer: DROP TABLE Account;
