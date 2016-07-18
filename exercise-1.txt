@@ -1,0 +1,7 @@
+Exercise 1
+
+Import Database Schema from the following source file into decodemtl_addressbook:
+
+data/import-table-structure.sql
+
+//answer: source data/import-table-structure.sql and then click enter
