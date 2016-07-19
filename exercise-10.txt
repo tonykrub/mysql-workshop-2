@@ -1,0 +1,21 @@
+Exercise 10
+
+1)How many Address Book Entries are listed as born before February 12th of 1982?
+
+2)How many Address Book Entries are listed as born on or after January 1st of 1965?
+
+3)Which Address Book Entry is listed as being the oldest of age?
+
+Answer:
+1) > SELECT id
+    -> FROM Entry
+    -> WHERE birthday < '1982-02-12';
+2) > SELECT id
+    -> FROM Entry
+    -> WHERE birthday >= '1965-01-01';
+3) SELECT * FROM Entry ORDER BY birthday LIMIT 1; // when we type 'LIMIT 1', it will give the first result which is the oldest. and if we type 'LIMIT 10', it will give the first 10 results
+    Also look at Ziad's lecture note on 18 July about "SELECT * FROM".
+
+
+
+
