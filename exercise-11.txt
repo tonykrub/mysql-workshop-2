@@ -1,0 +1,12 @@
+Exercise 11
+
+1) How many Address Book Entries are not listed as other?
+
+2) How many Address Book Entries are listed as either home or work?
+
+3) How many Address Book Entries are listed as phones?
+
+Answer;
+1) SELECT * FROM Entry WHERE type != 'other';
+2) SELECT * FROM Entry WHERE type = 'home' || type = 'work';
+3) SELECT * FROM Entry WHERE subtype = 'phone';
