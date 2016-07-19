@@ -1,0 +1,12 @@
+Exercise 9
+
+1)How many Accounts exist?
+
+2)How many Address Books exist?
+
+3)How many Address Book Entries exist?
+
+Answer: to do this question, read http://www.techonthenet.com/mysql/functions/count.php
+1) select count(id) from Account;
+2) select count(id) from AddressBook;
+3) select count(id) from Entry;
