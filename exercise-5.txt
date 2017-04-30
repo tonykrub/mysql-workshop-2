@@ -2,4 +2,34 @@ Exercise 5
 
 Delete all data from decodemtl_addressbook.Entry without using a DELETE statement
 
-Answer: DROP TABLE Entry;
+Answer: TRUNCATE Entry;
+for this question, we only need to delete data, not the table. so we cannot use 'drop'.
+but will use 'truncate' instead. 
+read http://www.electrictoolbox.com/article/mysql/delete-all-data-mysql/
+
+mysql> truncate Entry;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select*from Entry;
+Empty set (0.00 sec)
+
+mysql> show Entry;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'Entry' at line 1
+mysql> describe Entry;
++------------------+---------------------------------+------+-----+---------+----------------+
+| Field            | Type                            | Null | Key | Default | Extra          |
++------------------+---------------------------------+------+-----+---------+----------------+
+| id               | int(11)                         | NO   | PRI | NULL    | auto_increment |
+| addressBookId    | int(11)                         | NO   |     | NULL    |                |
+| firstName        | varchar(255)                    | NO   |     | NULL    |                |
+| lastName         | varchar(255)                    | YES  |     | NULL    |                |
+| birthday         | datetime                        | YES  |     | NULL    |                |
+| type             | enum('home','work','other')     | NO   |     | NULL    |                |
+| subtype          | enum('phone','address','email') | NO   |     | NULL    |                |
+| contentLineOne   | varchar(255)                    | NO   |     | NULL    |                |
+| contentLineTwo   | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineThree | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineFour  | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineFive  | varchar(255)                    | YES  |     | NULL    |                |
++------------------+---------------------------------+------+-----+---------+----------------+
+12 rows in set (0.00 sec)
