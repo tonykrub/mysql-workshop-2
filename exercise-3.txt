@@ -6,4 +6,15 @@ Retrieve data from the previously inserted decodemtl_addressbook.AddressBook row
 
 Retrieve data from the previously inserted decodemtl_addressbook.Entry rows
 
-// look at Ziad's lecture note on 18 July on how to do the above.
+// use " SELECT * FROM ". look at Ziad's lecture note on 18 July on how to do the above.
+
+answer
+mysql> select* from Entry;
++----+---------------+-----------+----------+---------------------+------+---------+----------------+----------------+------------------+-----------------+-----------------+
+| id | addressBookId | firstName | lastName | birthday            | type | subtype | contentLineOne | contentLineTwo | contentLineThree | contentLineFour | contentLineFive |
++----+---------------+-----------+----------+---------------------+------+---------+----------------+----------------+------------------+-----------------+-----------------+
+|  1 |             0 | Ben       | Benson   | 2011-11-11 00:00:00 | home | phone   | abcde          | hije           | poiee            | work            | docii           |
+|  2 |             3 | Harold    | Benson   | 1991-11-08 00:00:00 | work | phone   | 1-250-555-2942 | work cell      | office           | Houston         | B.C.            |
+|  3 |             5 | Erika     | Bensy    | 2001-09-01 00:00:00 | home | phone   | 230-555-9999   | home phone     | home             | ur              | ok              |
++----+---------------+-----------+----------+---------------------+------+---------+----------------+----------------+------------------+-----------------+-----------------+
+3 rows in set (0.00 sec)
