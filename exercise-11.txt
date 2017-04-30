@@ -8,5 +8,37 @@ Exercise 11
 
 Answer;
 1) SELECT * FROM Entry WHERE type != 'other';
+or
+mysql> select count(*) from Entry where type != 'other';
++----------+
+| count(*) |
++----------+
+|     2800 |
++----------+
+1 row in set (0.00 sec)
+
+
 2) SELECT * FROM Entry WHERE type = 'home' || type = 'work';
+
+or
+
+mysql> select count(*) from Entry where type = 'home' or type = 'work';
++----------+
+| count(*) |
++----------+
+|     2800 |
++----------+
+1 row in set (0.01 sec)
+
+
 3) SELECT * FROM Entry WHERE subtype = 'phone';
+
+or
+
+mysql> select count(*) from Entry where subtype = 'phone';
++----------+
+| count(*) |
++----------+
+|      600 |
++----------+
+1 row in set (0.00 sec)
