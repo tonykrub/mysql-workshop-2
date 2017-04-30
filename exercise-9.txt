@@ -8,5 +8,59 @@ Exercise 9
 
 Answer: to do this question, read http://www.techonthenet.com/mysql/functions/count.php
 1) select count(id) from Account;
+mysql> select count(id) from Account;
++-----------+
+| count(id) |
++-----------+
+|      1000 |
++-----------+
+1 row in set (0.00 sec)
+
+or another way of doing this is as follow;
+
+mysql> select count(*) from Account;
++----------+
+| count(*) |
++----------+
+|     1000 |
++----------+
+1 row in set (0.01 sec)
+
+
 2) select count(id) from AddressBook;
+mysql> select count(id) from AddressBook;
++-----------+
+| count(id) |
++-----------+
+|      1100 |
++-----------+
+1 row in set (0.00 sec)
+
+or another way to do this is as follow;
+mysql> select count(*) from AddressBook;
++----------+
+| count(*) |
++----------+
+|     1100 |
++----------+
+1 row in set (0.00 sec)
+
 3) select count(id) from Entry;
+mysql> select count(id) from Entry;
++-----------+
+| count(id) |
++-----------+
+|      4000 |
++-----------+
+1 row in set (0.00 sec)
+
+or below is another way to do this
+
+mysql> select count(*) from Entry;
++----------+
+| count(*) |
++----------+
+|     4000 |
++----------+
+1 row in set (0.00 sec)
+
