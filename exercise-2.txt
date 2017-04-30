@@ -5,3 +5,106 @@ Insert one row into decodemtl_addressbook.Account
 Insert one row into decodemtl_addressbook.AddressBook
 
 Insert three rows into decodemtl_addressbook.Entry
+
+// Below is an Example on how to do this;
+
+insert into employee
+  (first, last, age, address, city, state)
+  values ('Luke', 'Duke', 45, '2130 Boars Nest', 
+          'Hazard Co', 'Georgia');
+          
+read this for more info; http://www.sqlcourse.com/insert.html
+
+answer 2.1
+mysql> show databases;
++------------------------------+
+| Database                     |
++------------------------------+
+| information_schema           |
+| c9                           |
+| decodemtl_addressbook_import |
+| mysql                        |
+| performance_schema           |
+| phpmyadmin                   |
++------------------------------+
+6 rows in set (0.00 sec)
+
+mysql> use decodemtl_addressbook_import;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> show tables;
++----------------------------------------+
+| Tables_in_decodemtl_addressbook_import |
++----------------------------------------+
+| Account                                |
+| AddressBook                            |
+| Entry                                  |
++----------------------------------------+
+3 rows in set (0.00 sec)
+
+mysql> describe Account;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| id         | int(11)      | NO   | PRI | NULL    | auto_increment |
+| email      | varchar(255) | NO   |     | NULL    |                |
+| password   | varchar(40)  | NO   |     | NULL    |                |
+| createdOn  | datetime     | NO   |     | NULL    |                |
+| modifiedOn | datetime     | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into Account (id, email, password, createdOn, modifiedOn) values ('tonyaaa', 'tony@gmail.com', 'pass', '2015-01-01', '2016-01-01');
+Query OK, 1 row affected, 1 warning (0.01 sec)
+
+          
+answer 2.2
+
+mysql> describe Addressbook;
+ERROR 1146 (42S02): Table 'decodemtl_addressbook_import.Addressbook' doesn't exist
+mysql> describe AddressBook;
++------------+--------------+------+-----+---------+----------------+
+| Field      | Type         | Null | Key | Default | Extra          |
++------------+--------------+------+-----+---------+----------------+
+| id         | int(11)      | NO   | PRI | NULL    | auto_increment |
+| accountId  | int(11)      | NO   |     | NULL    |                |
+| name       | varchar(255) | NO   |     | NULL    |                |
+| createdOn  | datetime     | NO   |     | NULL    |                |
+| modifiedOn | datetime     | YES  |     | NULL    |                |
++------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+mysql> insert into AddressBook (id, accountId, name, createdOn, modifiedOn) values ('abcde', 'hijkl', 'Monique', '2015-01-09', '2016-05-05');
+Query OK, 1 row affected, 2 warnings (0.00 sec)
+
+
+
+answer 2.3
+
+mysql> describe Entry;
++------------------+---------------------------------+------+-----+---------+----------------+
+| Field            | Type                            | Null | Key | Default | Extra          |
++------------------+---------------------------------+------+-----+---------+----------------+
+| id               | int(11)                         | NO   | PRI | NULL    | auto_increment |
+| addressBookId    | int(11)                         | NO   |     | NULL    |                |
+| firstName        | varchar(255)                    | NO   |     | NULL    |                |
+| lastName         | varchar(255)                    | YES  |     | NULL    |                |
+| birthday         | datetime                        | YES  |     | NULL    |                |
+| type             | enum('home','work','other')     | NO   |     | NULL    |                |
+| subtype          | enum('phone','address','email') | NO   |     | NULL    |                |
+| contentLineOne   | varchar(255)                    | NO   |     | NULL    |                |
+| contentLineTwo   | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineThree | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineFour  | varchar(255)                    | YES  |     | NULL    |                |
+| contentLineFive  | varchar(255)                    | YES  |     | NULL    |                |
++------------------+---------------------------------+------+-----+---------+----------------+
+12 rows in set (0.01 sec)
+
+mysql> insert into Entry (id, addressBookId, firstName, lastName, birthday, type, subtype, contentLineOne, contentLineTwo, contentLineThree, contentLineFour, contentLineFive) values ('abc999', 'ab999', 'Ben', 'Benson', '2011-11-11', 'home', 'phone', 'abcde', 'hije', 'poiee', 'work', 'docii');
+Query OK, 1 row affected, 2 warnings (0.01 sec)
+
+mysql> insert into Entry (id, addressBookId, firstName, lastName, birthday, type, subtype, contentLineOne, contentLineTwo, contentLineThree, contentLineFour, contentLineFive) values ('2', '3', 'Harold', 'Benson', '1991-11-08', 'work', 'phone', '1-250-555-2942', 'work cell', 'office', 'Houston', 'B.C.'), ('3', '5', 'Erika', 'Bensy', '2001-09-01', 'home', 'phone', '230-555-9999', 'home phone', 'home', 'ur', 'ok');
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0          
