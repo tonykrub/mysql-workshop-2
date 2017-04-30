@@ -15,5 +15,5 @@ data/import-entry.sql
 Answer:
 source data/import-table-structure.sql
 source data/import-account.sql
-data/import-addressbook.sql
+source data/import-addressbook.sql
 source data/import-entry.sql
