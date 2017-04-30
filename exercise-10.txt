@@ -10,12 +10,44 @@ Answer:
 1) > SELECT id
     -> FROM Entry
     -> WHERE birthday < '1982-02-12';
+    
+    or could do like the below;
+    
+mysql> select count(*) from Entry where birthday < '1982-02-12';
++----------+
+| count(*) |
++----------+
+|     2687 |
++----------+
+1 row in set (0.00 sec)
+
+
 2) > SELECT id
     -> FROM Entry
     -> WHERE birthday >= '1965-01-01';
-3) SELECT * FROM Entry ORDER BY birthday LIMIT 1; // when we type 'LIMIT 1', it will give the first result which is the oldest. and if we type 'LIMIT 10', it will give the first 10 results
-    Also look at Ziad's lecture note on 18 July about "SELECT * FROM".
+    
+    or could do it like the below;
+    
+mysql> select count(*) from Entry where birthday >= '1965-01-01';
++----------+
+| count(*) |
++----------+
+|     2597 |
++----------+
+1 row in set (0.00 sec)
 
+
+3) SELECT * FROM Entry ORDER BY birthday LIMIT 1; // when we type 'LIMIT 1', it will give the first result which is the oldest. and if we type 'LIMIT 10', it will give the first 10 results
+    Also look at Ziad's lecture note on 18 July about "SELECT * FROM" and "LIMIT".
+    For 'ORDER BY', read http://dev.mysql.com/doc/refman/5.7/en/order-by-optimization.html
+
+mysql> select * from Entry order by birthday limit 1;
++------+---------------+-----------+----------+---------------------+-------+---------+----------------+----------------+------------------+-----------------+-----------------+
+| id   | addressBookId | firstName | lastName | birthday            | type  | subtype | contentLineOne | contentLineTwo | contentLineThree | contentLineFour | contentLineFive |
++------+---------------+-----------+----------+---------------------+-------+---------+----------------+----------------+------------------+-----------------+-----------------+
+| 2260 |            93 | Abigail   | Rollins  | 1945-09-02 09:21:58 | other | address | 194 Non Road   | Berlin         | Berlin           | Bolivia         | 791155          |
++------+---------------+-----------+----------+---------------------+-------+---------+----------------+----------------+------------------+-----------------+-----------------+
+1 row in set (0.01 sec)
 
 
 
