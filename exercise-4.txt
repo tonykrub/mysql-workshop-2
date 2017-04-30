@@ -7,15 +7,99 @@ Exercise 4
 3) Modify the three decodemtl_addressbook.Entry rows using one query only
 
 // to do this, read http://www.sqlcourse.com/update.html
+
+
+
 Answer 1) 
+
+mysql> select* from Account;
++----+----------------+----------+---------------------+---------------------+
+| id | email          | password | createdOn           | modifiedOn          |
++----+----------------+----------+---------------------+---------------------+
+|  1 | tony@gmail.com | pass     | 2015-01-01 00:00:00 | 2016-01-01 00:00:00 |
++----+----------------+----------+---------------------+---------------------+
+1 row in set (0.00 sec)
+
+mysql> update Account set password = 'ehy' where password = 'pass';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+
+or below is what i did in cohort5 but not sure if it is correct.
+
 UPDATE Account
     -> SET email = 'tony@gmail.com' WHERE id = 999;
     
+    
+    
 Answer 2)
+mysql> select* from AddressBook;
++----+-----------+---------+---------------------+---------------------+
+| id | accountId | name    | createdOn           | modifiedOn          |
++----+-----------+---------+---------------------+---------------------+
+|  1 |         0 | Monique | 2015-01-09 00:00:00 | 2016-05-05 00:00:00 |
++----+-----------+---------+---------------------+---------------------+
+1 row in set (0.00 sec)
+
+mysql> update AddressBook set accountId = 5 where accountId = 0;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select* from AddressBook;
++----+-----------+---------+---------------------+---------------------+
+| id | accountId | name    | createdOn           | modifiedOn          |
++----+-----------+---------+---------------------+---------------------+
+|  1 |         5 | Monique | 2015-01-09 00:00:00 | 2016-05-05 00:00:00 |
++----+-----------+---------+---------------------+---------------------+
+1 row in set (0.00 sec)
+
+or below is what i did during the last cohort but not sure if it is all correct. 
 UPDATE AddressBook
     -> SET name = 'Rose' WHERE id = 9;
     
 Answer 3)
+mysql> select* from Entry;
++----+---------------+-----------+----------+---------------------+------+---------+----------------+----------------+------------------+-----------------+-----------------+
+| id | addressBookId | firstName | lastName | birthday            | type | subtype | contentLineOne | contentLineTwo | contentLineThree | contentLineFour | contentLineFive |
++----+---------------+-----------+----------+---------------------+------+---------+----------------+----------------+------------------+-----------------+-----------------+
+|  1 |             0 | Ben       | Benson   | 2011-11-11 00:00:00 | home | phone   | abcde          | hije           | poiee            | work            | docii           |
+|  2 |             3 | Harold    | Benson   | 1991-11-08 00:00:00 | work | phone   | 1-250-555-2942 | work cell      | office           | Houston         | B.C.            |
+|  3 |             5 | Erika     | Bensy    | 2001-09-01 00:00:00 | home | phone   | 230-555-9999   | home phone     | home             | ur              | ok              |
++----+---------------+-----------+----------+---------------------+------+---------+----------------+----------------+------------------+-----------------+-----------------+
+3 rows in set (0.00 sec)
+
+mysql> update Entry set id = 9 where id = 0 and set firstName = 'Todd' where firstName = 'Harold' and set lastName = 'Coke' where lastName = 'Bensy';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'set firstName = 'Todd' where firstName = 'Harold' and set lastName = 'Coke' wher' at line 1
+mysql> update Entry set type = 'home' where subtype = 'phone';
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 3  Changed: 1  Warnings: 0
+
+mysql> select*from Entry;
++----+---------------+-----------+----------+---------------------+------+---------+----------------+----------------+------------------+-----------------+-----------------+
+| id | addressBookId | firstName | lastName | birthday            | type | subtype | contentLineOne | contentLineTwo | contentLineThree | contentLineFour | contentLineFive |
++----+---------------+-----------+----------+---------------------+------+---------+----------------+----------------+------------------+-----------------+-----------------+
+|  1 |             0 | Ben       | Benson   | 2011-11-11 00:00:00 | home | phone   | abcde          | hije           | poiee            | work            | docii           |
+|  2 |             3 | Harold    | Benson   | 1991-11-08 00:00:00 | home | phone   | 1-250-555-2942 | work cell      | office           | Houston         | B.C.            |
+|  3 |             5 | Erika     | Bensy    | 2001-09-01 00:00:00 | home | phone   | 230-555-9999   | home phone     | home             | ur              | ok              |
++----+---------------+-----------+----------+---------------------+------+---------+----------------+----------------+------------------+-----------------+-----------------+
+3 rows in set (0.00 sec)
+
+mysql> update Entry set firstName = 'Tony' where subtype = 'phone';
+Query OK, 3 rows affected (0.02 sec)
+Rows matched: 3  Changed: 3  Warnings: 0
+
+mysql> select*from Entry;
++----+---------------+-----------+----------+---------------------+------+---------+----------------+----------------+------------------+-----------------+-----------------+
+| id | addressBookId | firstName | lastName | birthday            | type | subtype | contentLineOne | contentLineTwo | contentLineThree | contentLineFour | contentLineFive |
++----+---------------+-----------+----------+---------------------+------+---------+----------------+----------------+------------------+-----------------+-----------------+
+|  1 |             0 | Tony      | Benson   | 2011-11-11 00:00:00 | home | phone   | abcde          | hije           | poiee            | work            | docii           |
+|  2 |             3 | Tony      | Benson   | 1991-11-08 00:00:00 | home | phone   | 1-250-555-2942 | work cell      | office           | Houston         | B.C.            |
+|  3 |             5 | Tony      | Bensy    | 2001-09-01 00:00:00 | home | phone   | 230-555-9999   | home phone     | home             | ur              | ok              |
++----+---------------+-----------+----------+---------------------+------+---------+----------------+----------------+------------------+-----------------+-----------------+
+3 rows in set (0.00 sec)
+
+below is what i did during the last cohort.
+
 UPDATE Entry
     -> SET birthday = '1 January 1999' WHERE firstName = 'Lisa';
 
